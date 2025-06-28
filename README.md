@@ -1,18 +1,22 @@
-## Getting Started
+## Evaluacion
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Preguntas: 
 
-## Folder Structure
+1 - ¿Qué operador usarías para transformar una lista de títulos a mayúsculas?
+    R = Usaría map() junto con String::toUpperCase o getTitle().toUpperCase():
 
-The workspace contains two folders by default, where:
+        java
+        Copiar código
+        books.stream()
+            .map(book -> book.getTitle().toUpperCase())
+            .forEach(System.out::println);
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+2 - ¿Cómo verificarías si todos los libros cuestan menos de $100?
+    R = Para verificar si todos los libros cuestan menos de $100, podemos usar el método allMatch del API de Streams: 
+        System.out.println("\n11. ¿Todos los libros cuestan menos de $100?");
+        boolean todosMenosDe100 = books.stream()
+            .allMatch(book -> book.getPrice() < 100);
+        System.out.println("¿Todos cuestan menos de $100? " + todosMenosDe100);
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+3 - Escribe una expresión lambda que retorne true si el autor es "Gabriel García Márquez".
+    R = book -> book.getAuthor().equals("Gabriel García Márquez")
